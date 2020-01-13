@@ -1,0 +1,133 @@
+* {
+	padding: 0px;
+	margin: 0px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	box-sizing: border-box;
+	color: black;
+}
+
+.sign-in-up {
+	background-color: goldenrod;
+	box-shadow: -2px 2px 2px 1px rgb(94, 69, 8);
+	padding: 15px;
+	/* margin: 50px 300px; */
+	width: 700px;
+	border-radius: 5px;
+	margin-top: 100px;
+}
+.log-title {
+	font-size: 24px;
+}
+.btn-login {
+	width: 200px;
+	border-radius: 5px;
+	margin: 10px;
+	background-color: white;
+	color: black;
+}
+.btn-login:hover {
+	box-shadow: -1px 1px 3px 2px rgb(94, 69, 8);
+}
+input {
+	border-radius: 5px;
+	color: black;
+}
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	/* margin: 0 167px; */
+	padding: 10px 167px;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	background-color: white;
+	z-index: 5;
+}
+.nav-menu {
+	display: flex;
+}
+ul {
+	list-style: none;
+}
+.navbar a {
+	margin-right: 30px;
+	/* height: 30px; */
+	text-decoration: none;
+}
+.active {
+	color: goldenrod;
+}
+.navbar li:hover {
+	color: goldenrod;
+}
+
+.trackCard {
+	background-color: goldenrod;
+	box-shadow: -2px 1px 1px 1px rgb(94, 69, 8);
+	padding: 20px;
+	margin: 10px 300px;
+	border-radius: 5px 7px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.trackCard:hover {
+	transition: all 0.4s ease-in-out;
+	box-shadow: -2px 3px 5px 3px rgb(94, 69, 8);
+	cursor: pointer;
+}
+.title-tracks {
+	text-align: center;
+	font-size: 24px;
+	margin-top: 50px;
+}
+.donate-btn {
+	background-color: rgb(255, 255, 255);
+	border-radius: 5px 7px;
+	padding: 3px;
+	font-size: 15px;
+	width: 80px;
+}
+.donate-btn:hover {
+	box-shadow: -1px 1px 3px 2px rgb(94, 69, 8);
+}
+.trackCard-item {
+	color: white;
+}
+/* .artist-name {
+	border: 2px solid red;
+	color: black;
+	height: 200px;
+} */
+
+.artist-card {
+	background-color: goldenrod;
+	box-shadow: -2px 1px 1px 1px rgb(94, 69, 8);
+	padding: 20px;
+	margin: 10px 300px;
+	border-radius: 5px 7px;
+	display: flex;
+	justify-content: space-between;
+}
+/* 
+.artists {
+	display: flex;
+	justify-content: space-between;
+} */
+.artist-cart-item {
+	color: white;
+}
+/* .donate-input {
+	margin: 20px 600px;
+} */
+.donate {
+	text-align: center;
+	background-color: goldenrod;
+	box-shadow: -2px 1px 1px 1px rgb(94, 69, 8);
+	padding: 20px;
+	margin: 10px 300px;
+	border-radius: 5px 7px;
+	/* display: flex;
+	justify-content: space-between; */
+}
