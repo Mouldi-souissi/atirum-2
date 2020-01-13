@@ -15,7 +15,7 @@ export class TrackCard extends Component {
 					<div className='trackCard-item'> donations: {donations}D</div>
 					{donations >= price && (
 						<Player>
-							<source src={`http://localhost:6000/${video}`} />
+							<source src={`http://localhost:5000/public/${video}`} />
 						</Player>
 					)}
 				</div>

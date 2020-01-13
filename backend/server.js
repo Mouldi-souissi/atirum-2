@@ -38,6 +38,6 @@ app.use("/user", userRoute);
 app.use("/user/artist", track);
 app.use("/user/profile", profile);
 
-app.listen(6000, err => {
-	console.log(err ? "server error" : "server is running on port 6000");
+app.listen(5000, err => {
+	console.log(err ? "server error" : "server is running on port 5000");
 });

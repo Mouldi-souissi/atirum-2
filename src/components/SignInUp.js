@@ -22,10 +22,13 @@ export class SignInUp extends Component {
 
 	handleSignIn = () => {
 		axios.post("/user/login", this.state).then(res => {
-			localStorage.setItem("token", res.data.token);
-			const decoded = jwt_decode(localStorage.token);
-			this.props.history.push(`/Dashboard/${decoded.id}`);
-			this.props.update();
+			if (res.data === "invalid credentials") alert("invalid credentials");
+			else {
+				localStorage.setItem("token", res.data.token);
+				const decoded = jwt_decode(localStorage.token);
+				this.props.history.push(`/Dashboard/${decoded.id}`);
+				this.props.update();
+			}
 		});
 	};
 

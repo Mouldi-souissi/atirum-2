@@ -6,7 +6,7 @@ export class Dashboard extends Component {
 		description: "",
 		aka: "",
 		isAdding: false,
-		track: { title, price }
+		track: { title: "", price: 0 }
 	};
 
 	handleProfileData = () => {
@@ -20,7 +20,13 @@ export class Dashboard extends Component {
 				this.props.history.push(`/artistProfile/${this.props.match.params.id}`)
 			);
 	};
-
+	handleTrack = () => {
+		axios
+			.post("/user/artist/addTrack", this.state.track)
+			.then(
+				this.props.history.push(`/artistProfile/${this.props.match.params.id}`)
+			);
+	};
 	render() {
 		return (
 			<div>
@@ -38,11 +44,10 @@ export class Dashboard extends Component {
 				{this.state.isAdding && (
 					<div>
 						<label>title</label>
-						<input />
+						<input onChange={e => this.setState({ title: e.target.value })} />
 						<label>price</label>
-						<input />
-						<label>duration</label>
-						<input />
+						<input onChange={e => this.setState({ price: e.target.value })} />
+						<button onClick={this.handleTrack}>save track</button>
 						<button type='Upload'>upload</button>
 					</div>
 				)}

@@ -13,7 +13,8 @@ router.post(
 			artist: req.user.id,
 			duration: req.body.duration,
 			price: req.body.price,
-			style: req.body.style
+			style: req.body.style,
+			donations: req.body.donations
 		});
 		newTrack
 			.save()
@@ -72,7 +73,7 @@ router.put(
 
 router.put(
 	"/upload/:id",
-	// passport.authenticate("jwt", { session: false }),
+	passport.authenticate("jwt", { session: false }),
 	(req, res) => {
 		if (!req.files) {
 			res.send("Please upload a file");
