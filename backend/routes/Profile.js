@@ -9,9 +9,10 @@ router.post(
 	(req, res) => {
 		const newProfile = new Profile({
 			description: req.body.description,
-			AKA: req.body.aka,
+			aka: req.body.aka,
 			userId: req.body.userId,
-			tracks: req.body.userId
+			img: req.body.img
+			// tracks: req.body.userId
 		});
 		newProfile
 			.save()
@@ -22,14 +23,21 @@ router.post(
 
 router.get("/getAllProfiles", (req, res) => {
 	Profile.find()
-		// .populate("tracks")
-		.then(res => res.json(res))
+		.then(profile => res.send(profile))
 		.catch(err => res.send(err));
+	// .populate("tracks")
 });
 
 router.get("/getProfileById/:id", (req, res) => {
 	const { id } = req.params;
 	Profile.findOne({ userId: id })
+		.then(profile => res.json(profile))
+		.catch(err => res.send(err));
+});
+
+router.put("/editProfile/:id", (req, res) => {
+	const { id } = req.params;
+	Profile.findOneAndUpdate({ userId: id }, req.body)
 		.then(profile => res.json(profile))
 		.catch(err => res.send(err));
 });

@@ -5,12 +5,20 @@ import { withRouter } from "react-router";
 export class Donate extends Component {
 	state = {
 		sum: 0,
-		donations: 0
+		donations: 0,
+		title: "",
+		price: 0
 	};
 	componentDidMount() {
 		axios
 			.get(`/user/artist/getTrackBy/${this.props.match.params.id}`)
-			.then(res => this.setState({ donations: res.data[0].donations }));
+			.then(res =>
+				this.setState({
+					donations: res.data[0].donations,
+					title: res.data[0].title,
+					price: res.data[0].price
+				})
+			);
 	}
 	handleDonate = () => {
 		axios
@@ -19,16 +27,18 @@ export class Donate extends Component {
 			})
 			.then(res => {
 				this.setState({ donations: res.data.donations });
-				alert("donation sended");
 				this.props.update();
+				alert("donation sended");
+				this.props.history.push("/");
 			});
 	};
 	render() {
 		return (
 			<div className='donate'>
 				<p className='title-tracks'>Donate:</p>
-				{/* <label>enter your donation in TND</label> */}
-				<div>Total donations:{this.state.donations}</div>
+				<div>Track title: {this.state.title}</div>
+				<div>Price: {this.state.price}D</div>
+				<div>Total donations: {this.state.donations}D</div>
 				<input
 					type='text'
 					className='donate-input'

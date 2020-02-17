@@ -23,22 +23,27 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-	User.findOne({ email: req.body.email }).then(user => {
-		if (!user) res.send("invalid credentials");
-		else {
-			bcrypt.compare(req.body.password, user.password).then(correctPassword => {
-				if (correctPassword) {
-					const payload = {
-						id: user.id,
-						email: user.email
-					};
-					jwt.sign(payload, "key", { expiresIn: 3600 }, (err, token) => {
-						res.json({ token: "Bearer " + token });
+	User.findOneAndUpdate({ email: req.body.email }, { connected: true }).then(
+		user => {
+			if (!user) res.send("invalid credentials");
+			else {
+				bcrypt
+					.compare(req.body.password, user.password)
+					.then(correctPassword => {
+						if (correctPassword) {
+							const payload = {
+								id: user.id,
+								email: user.email,
+								connected: true
+							};
+							jwt.sign(payload, "key", { expiresIn: 3600 }, (err, token) => {
+								res.json({ token: "Bearer " + token });
+							});
+						} else res.send("invalid credentials");
 					});
-				} else res.send("invalid credentials");
-			});
+			}
 		}
-	});
+	);
 });
 
 router.get(

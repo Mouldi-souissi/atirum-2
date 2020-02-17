@@ -8,9 +8,9 @@ export class Artists extends Component {
 				<p className='title-tracks'>Artists: </p>
 				{this.props.artists.map(artist => (
 					<Link
-						to={`/artistProfile/${artist._id}`}
+						to={`/artistProfile/${artist.userId}`}
 						style={{ textDecoration: "none" }}>
-						<ArtistCard key={artist.id} artist={artist} />
+						<ArtistCard key={artist.userId} artist={artist} />
 					</Link>
 				))}
 			</div>

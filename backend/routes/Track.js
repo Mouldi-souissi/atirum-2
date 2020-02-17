@@ -6,15 +6,17 @@ const path = require("path");
 
 router.post(
 	"/addTrack",
-	passport.authenticate("jwt", { session: false }),
+	// passport.authenticate("jwt", { session: false }),
 	(req, res) => {
 		const newTrack = new Track({
-			title: req.body.title,
-			artist: req.user.id,
+			title: req.body.track.title,
+			artist: req.body.artist,
+			artistID: req.body.artistID,
 			duration: req.body.duration,
-			price: req.body.price,
+			price: req.body.track.price,
 			style: req.body.style,
-			donations: req.body.donations
+			videoUrl: req.body.track.videoUrl
+			// donations: req.body.donations
 		});
 		newTrack
 			.save()
@@ -25,14 +27,14 @@ router.post(
 
 router.get("/getAllTracks", (req, res) => {
 	Track.find()
-		.populate("artist")
+		// .populate("artist")
 		.then(tracks => res.json(tracks))
 		.catch(err => res.json(err));
 });
 
 router.get("/getTracksBy/:artist", (req, res) => {
 	const { artist } = req.params;
-	Track.find({ artist: artist })
+	Track.find({ artistID: artist })
 		.then(tracks => res.json(tracks))
 		.catch(err => res.send("error"));
 });
@@ -48,7 +50,7 @@ router.get("/getTrackBy/:id", (req, res) => {
 
 router.delete(
 	"/deleteTrackById/:_id",
-	passport.authenticate("jwt", { session: false }),
+	// passport.authenticate("jwt", { session: false }),
 	(req, res) => {
 		const { _id } = req.params;
 		Track.findOneAndDelete({ _id })
@@ -71,8 +73,9 @@ router.put(
 	}
 );
 
-router.put(
+router.post(
 	"/upload/:id",
+	// "/upload",
 	passport.authenticate("jwt", { session: false }),
 	(req, res) => {
 		if (!req.files) {
@@ -85,6 +88,7 @@ router.put(
 			res.send("Please upload a video");
 		}
 		file.name = `video_${String(req.params.id)}${path.parse(file.name).ext}`;
+		// file.name = `video_${path.parse(file.name).ext}`;
 		file.mv(`./public/${file.name}`, async err => {
 			if (err) {
 				console.log(err);
@@ -99,5 +103,27 @@ router.put(
 		});
 	}
 );
+
+// router.post("/upload", function(req, res) {
+// 	let sampleFile;
+// 	let uploadPath;
+
+// 	if (!req.files || Object.keys(req.files).length === 0) {
+// 		res.status(400).send("No files were uploaded.");
+// 		return;
+// 	}
+
+// 	console.log("req.files >>>", req.files); // eslint-disable-line
+
+// 	sampleFile = req.files.sampleFile;
+
+// 	uploadPath = __dirname + "/uploads/" + sampleFile.name;
+
+// 	sampleFile.mv(uploadPath, function(err) {
+// 		if (err) {
+// 			return res.status(500).send(err);
+// 		}
+// 	});
+// });
 
 module.exports = router;

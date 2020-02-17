@@ -9,7 +9,7 @@ export class Tracks extends Component {
 				<p className='title-tracks'>Tracks:</p>
 				{this.props.tracks.map(track => (
 					<Link
-						to={`/artistProfile/${track.artist._id}`}
+						to={`/artistProfile/${track.artistID}`}
 						style={{ textDecoration: "none" }}>
 						<TrackCard
 							key={track._id}

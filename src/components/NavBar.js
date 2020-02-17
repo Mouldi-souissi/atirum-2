@@ -1,24 +1,38 @@
 import React, { Component } from "react";
-import logo from "../assets/logo3.png";
-import { Link } from "react-router-dom";
+import logok from "../assets/logok2.png";
+import { Link, Redirect } from "react-router-dom";
+import SearchBar from "./Search";
 
 export class Search extends Component {
 	render() {
 		return (
 			<div>
 				<div className='navbar'>
-					<img src={logo} alt='img' width='20%' />
+					<img src={logok} alt='img' width='20%' />
 
 					<ul className='nav-menu'>
 						<Link to='/'>
-							<li>Tracks</li>
+							<li>TRACKS</li>
 						</Link>
 						<Link to='/artists'>
-							<li>Artists</li>
+							<li>ARTISTS</li>
 						</Link>
-						<Link to='/signInUp'>
-							<li>Sign in/up</li>
-						</Link>
+						{localStorage.getItem("token") !== null ? (
+							<Link
+								to='/'
+								onClick={() => {
+									window.localStorage.removeItem("token");
+									this.props.update();
+								}}>
+								<li>Log out</li>
+							</Link>
+						) : (
+							<Link to='/signInUp'>
+								<li>SIGN IN-UP</li>
+							</Link>
+						)}
+
+						<SearchBar handleSearch={this.props.handleSearch} />
 					</ul>
 				</div>
 			</div>

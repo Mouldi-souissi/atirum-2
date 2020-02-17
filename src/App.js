@@ -13,7 +13,14 @@ import Dashboard from "./components/Dashboard";
 class App extends Component {
 	state = {
 		tracks: [],
-		artists: []
+		artists: [],
+		seekedTrack: ""
+		// connected: false
+	};
+	handleSearch = e => {
+		this.setState({
+			seekedTrack: e.target.value
+		});
 	};
 
 	getAllTracks = () => {
@@ -31,16 +38,28 @@ class App extends Component {
 	componentDidMount() {
 		this.getAllTracks();
 		this.getAllArtists();
+		// let token = localStorage.getItem("token");
+		// const config = {
+		// 	headers: { Authorization: token }
+		// };
+		// axios.get("/user/getUser", config).then(res => {
+		// 	if (res.data.connected === true) {
+		// 		this.setState({ connected: true });
+		// 		console.log(res.data.connected + "lllllllllllll");
+		// 	}
+		// });
 	}
 	update = () => {
 		this.componentDidMount();
 	};
 	render() {
-		console.log(this.state.artists + "saleeeemmmmmmmm");
 		return (
 			<div className='App'>
 				<Router>
-					<NavBar></NavBar>
+					<NavBar
+						handleSearch={this.handleSearch}
+						update={this.update}></NavBar>
+
 					<Switch>
 						<Route
 							path='/signInUp'
@@ -51,8 +70,16 @@ class App extends Component {
 							path='/'
 							render={() => (
 								<Tracks
-									tracks={this.state.tracks}
-									// update={this.componentDidMount()}
+									tracks={this.state.tracks.filter(
+										track =>
+											track.title
+												.toLowerCase()
+												.trim()
+												.includes(
+													this.state.seekedTrack.toLowerCase().trim()
+												) === true
+									)}
+									update={this.update}
 								/>
 							)}
 						/>
@@ -63,14 +90,18 @@ class App extends Component {
 						<Route
 							exact
 							path='/artistProfile/:id'
-							render={() => <ArtistProfile />}
+							render={() => <ArtistProfile update={this.update} />}
 						/>
 						<Route
 							exact
 							path='/donate/:id'
 							render={() => <Donate update={this.update} />}
 						/>
-						<Route exact path='/Dashboard/:id' render={() => <Dashboard />} />
+						<Route
+							exact
+							path='/Dashboard/:id'
+							render={() => <Dashboard update={this.update} />}
+						/>
 					</Switch>
 				</Router>
 			</div>

@@ -4,13 +4,26 @@
 	font-family: Georgia, "Times New Roman", Times, serif;
 	box-sizing: border-box;
 	color: black;
+	font-family: "Poppins", sans-serif;
 }
 
+/* .App {
+	background-image: url("./assets/backimg.jpg");
+	height: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+} */
 .sign-in-up {
-	background-color: goldenrod;
-	box-shadow: -2px 2px 2px 1px rgb(94, 69, 8);
+	/* background-color: goldenrod;
+	box-shadow: -2px 2px 2px 1px rgb(94, 69, 8); */
+	background-image: url("./assets/log2.jpg");
+	height: 400px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 	padding: 15px;
-	/* margin: 50px 300px; */
+	margin: 50px 300px;
 	width: 700px;
 	border-radius: 5px;
 	margin-top: 100px;
@@ -26,7 +39,7 @@
 	color: black;
 }
 .btn-login:hover {
-	box-shadow: -1px 1px 3px 2px rgb(94, 69, 8);
+	box-shadow: greenyellow;
 }
 input {
 	border-radius: 5px;
@@ -37,12 +50,14 @@ input {
 	justify-content: space-between;
 	align-items: center;
 	/* margin: 0 167px; */
-	padding: 10px 167px;
+	padding: 10px 250px;
 	position: -webkit-sticky;
 	position: sticky;
 	top: 0;
 	background-color: white;
 	z-index: 5;
+	font-weight: bold;
+	font-size: 20px;
 }
 .nav-menu {
 	display: flex;
@@ -55,45 +70,50 @@ ul {
 	/* height: 30px; */
 	text-decoration: none;
 }
-.active {
-	color: goldenrod;
-}
+
 .navbar li:hover {
-	color: goldenrod;
+	color: greenyellow;
 }
 
 .trackCard {
-	background-color: goldenrod;
-	box-shadow: -2px 1px 1px 1px rgb(94, 69, 8);
-	padding: 20px;
+	background-image: url("./assets/tape.png");
+	height: 500px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	/* border: 2px solid red; */
+	/* background-color: goldenrod; */
+	/* box-shadow: -2px 1px 1px 1px rgb(94, 69, 8); */
+
+	/* font-weight: bold; */
+	padding: 70px 100px;
 	margin: 10px 300px;
 	border-radius: 5px 7px;
 	display: flex;
 	justify-content: space-between;
 }
 
-.trackCard:hover {
-	transition: all 0.4s ease-in-out;
-	box-shadow: -2px 3px 5px 3px rgb(94, 69, 8);
-	cursor: pointer;
-}
 .title-tracks {
 	text-align: center;
 	font-size: 24px;
 	margin-top: 50px;
+	font-family: "Permanent Marker", cursive;
 }
 .donate-btn {
-	background-color: rgb(255, 255, 255);
+	background-color: greenyellow;
 	border-radius: 5px 7px;
 	padding: 3px;
 	font-size: 15px;
 	width: 80px;
 }
 .donate-btn:hover {
-	box-shadow: -1px 1px 3px 2px rgb(94, 69, 8);
+	box-shadow: 1px greenyellow;
 }
 .trackCard-item {
-	color: white;
+	color: black;
+	text-shadow: 2px 1px 1px greenyellow;
+	font-family: "Permanent Marker", cursive;
+	font-size: px;
 }
 /* .artist-name {
 	border: 2px solid red;
@@ -102,13 +122,18 @@ ul {
 } */
 
 .artist-card {
-	background-color: goldenrod;
-	box-shadow: -2px 1px 1px 1px rgb(94, 69, 8);
+	/* background-color: goldenrod;
+	box-shadow: -2px 1px 1px 1px rgb(94, 69, 8); */
+	background-image: url("./assets/artist.png");
+	height: 400px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 	padding: 20px;
 	margin: 10px 300px;
 	border-radius: 5px 7px;
-	display: flex;
-	justify-content: space-between;
+	/* display: flex;
+	justify-content: space-between; */
 }
 /* 
 .artists {
@@ -116,18 +141,67 @@ ul {
 	justify-content: space-between;
 } */
 .artist-cart-item {
-	color: white;
+	color: greenyellow;
+	text-shadow: 2px 1px 1px red;
+	text-align: center;
+	font: 24px bold;
+	font-weight: bold;
 }
 /* .donate-input {
 	margin: 20px 600px;
 } */
 .donate {
+	background-image: url("./assets/card2.png");
+	height: 700px;
 	text-align: center;
+	/* background-position: center; */
+	background-repeat: no-repeat;
+	/* background-size: cover; */
+	/* padding: 20px; */
+}
+.dashboard {
+	background-image: url("./assets/dash6.jpg");
+	height: 400px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
 	background-color: goldenrod;
-	box-shadow: -2px 1px 1px 1px rgb(94, 69, 8);
+	margin: 30px 300px;
 	padding: 20px;
-	margin: 10px 300px;
 	border-radius: 5px 7px;
-	/* display: flex;
-	justify-content: space-between; */
+	font-weight: bold;
+}
+.dashboard input,
+button {
+	margin: 10px;
+}
+.artist-profile {
+	display: flex;
+	justify-content: space-between;
+	margin: 30px 300px;
+	padding: 50px;
+}
+.profile-desc {
+	margin: 0 auto;
+}
+.video {
+	margin: 10px 300px;
+}
+.profile-img {
+	/* border-radius: 50%; */
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 0;
+}
+.img-container {
+	width: 400px;
+	height: 400px;
+	position: relative;
+	overflow: hidden;
+}
+.background-profile {
+	background-color: rgba(0, 0, 0, 0.068);
 }

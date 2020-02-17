@@ -33,6 +33,7 @@ app.use(fileUpload());
 
 // app.use(express.static(path.join(__dirname, "public")));
 app.use("/public", express.static("public"));
+// app.use("/form", express.static(__dirname + "/index.html"));
 
 app.use("/user", userRoute);
 app.use("/user/artist", track);

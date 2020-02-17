@@ -32,27 +32,11 @@ export class SignInUp extends Component {
 		});
 	};
 
-	handleAddTrack = () => {
-		axios
-			.post(
-				"/user/artist/addTrack",
-				{ title: "hero" },
-				{
-					headers: {
-						Authorization: localStorage.getItem("token")
-					}
-				}
-			)
-			.then(res => {
-				console.log(res);
-			});
-	};
-
 	render() {
 		return (
 			<div className='sign-in-up container'>
 				<p className='row d-flex justify-content-center log-title'>
-					Sign in/up
+					SIGN IN-UP
 				</p>
 				<form>
 					<label className='col-2'>email:</label>
